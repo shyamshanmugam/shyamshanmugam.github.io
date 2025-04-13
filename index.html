@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shyam Shanmugam M | Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode {
+      background-color: #2c3e50;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background: #1a73e8;
+      color: #fff;
+      padding: 3rem;
+      text-align: center;
+      border-bottom: 1px solid #34495e;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .container.dark-mode {
+      background: #34495e;
+    }
+
+    /* Sections */
+    section {
+      padding: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Skills and Projects */
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    /* Links */
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #888;
+      background: #f1f1f1;
+    }
+
+    /* Dark Mode Button */
+    .dark-mode-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .dark-mode-btn:hover {
+      background: #0f58b7;
+    }
+
+    /* Pie Chart Container */
+    .chart-container {
+      position: relative;
+      margin: 2rem auto;
+      width: 80%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle Button -->
+  <button class="dark-mode-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Shyam Shanmugam M</h1>
+    <p>Tech Explorer | Ethical Hacker | Embedded Systems Developer</p>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- About Me Section -->
+    <section>
+      <h2>About Me</h2>
+      <p>I am a passionate tech enthusiast, focused on ethical hacking, embedded systems, and software security. My journey revolves around exploring the potential of technology, securing systems, and contributing innovative ideas in the tech space. I am actively expanding my skills in GPU architecture and AI tools.</p>
+    </section>
+
+    <!-- Interests Section -->
+    <section>
+      <h2>My Interests</h2>
+      <p>I am deeply interested in exploring new technologies and pushing the boundaries of what's possible. Some of my key interests include:</p>
+      <ul>
+        <li>Exploring Embedded Systems</li>
+        <li>Ethical Hacking & Cybersecurity</li>
+        <li>Artificial Intelligence & Machine Learning</li>
+        <li>GPU Architecture & High-Performance Computing</li>
+        <li>Technology for Social Good</li>
+      </ul>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>Linux (Parrot OS, Kali Linux, Shell Scripting)</li>
+        <li>Embedded Systems Design & Weather Satellite Project</li>
+        <li>Ethical Hacking & Android Penetration Testing (Termux)</li>
+        <li>Python Programming & Scripting</li>
+        <li>Web Security Testing & Vulnerability Analysis</li>
+      </ul>
+    </section>
+
+    <!-- Interests Chart Section -->
+    <section>
+      <h2>My Interests in Tech</h2>
+      <div class="chart-container">
+        <canvas id="interestChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section>
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Weather Satellite:</strong> Developed and tested a satellite system for real-time environmental data collection.</li>
+        <li><strong>Android Security Penetration Testing:</strong> Conducted in-depth security analysis of Android systems using Termux.</li>
+        <li><strong>GPU Architecture Research:</strong> Ongoing work on GPU architecture concepts and simulations in NPTEL course.</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+      <h2>Contact</h2>
+      <p>Feel free to reach out via my GitHub profile:</p>
+      <p>GitHub: <a href="https://github.com/shyamshanmugam" target="_blank">shyamshanmugam</a></p>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Shyam Shanmugam M | All Rights Reserved
+  </footer>
+
+  <script>
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('.container').classList.toggle('dark-mode');
+    }
+
+    // Pie Chart for Interests
+    var ctx = document.getElementById('interestChart').getContext('2d');
+    var interestChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Ethical Hacking', 'Embedded Systems', 'AI & ML', 'GPU Architecture', 'Tech for Social Good'],
+        datasets: [{
+          label: 'My Interests in Tech',
+          data: [30, 25, 20, 15, 10],
+          backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F3FF33'],
+          borderColor: '#fff',
+          borderWidth: 1
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
+
